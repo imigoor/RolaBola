@@ -2,8 +2,7 @@ package application;
 
 import com.db4o.ObjectContainer;
 import com.db4o.query.Query;
-import domain.entities.Jogo;
-import infrastructure.Util;
+import domain.modelos.Jogo;
 
 public class Consultar {
     public static void main(String[] args) {

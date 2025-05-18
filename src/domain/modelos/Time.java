@@ -1,4 +1,4 @@
-package domain.entities;
+package domain.modelos;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package domain.entities;
+package domain.modelos;
 
 public class Jogo {
     private int id;

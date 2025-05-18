@@ -1,9 +1,9 @@
-package infrastructure;
+package application;
 
 import com.db4o.*;
 import com.db4o.config.EmbeddedConfiguration;
-import domain.entities.Jogo;
-import domain.entities.Time;
+import domain.modelos.Jogo;
+import domain.modelos.Time;
 
 public class Util {
     private static final String DB_FILE = "rolabola.db4o";
@@ -20,7 +20,7 @@ public class Util {
         config.common().objectClass(Time.class).cascadeOnActivate(true);
 
         config.common().objectClass(Jogo.class).cascadeOnUpdate(true);
-        config.common().objectClass(Jogo.class).cascadeOnDelete(true);
+        config.common().objectClass(Jogo.class).cascadeOnDelete(false);
         config.common().objectClass(Jogo.class).cascadeOnActivate(true);
 
         manager = Db4oEmbedded.openFile(config, DB_FILE);
