@@ -8,30 +8,16 @@ public class Time {
     private int pontuacao;
     private List<Jogo> jogos;
 
-    // Construtor padrão exigido pelo db4o
-    public Time() {
-        this.jogos = new ArrayList<>();
-    }
-
-    // Construtor com nome
-    public Time(String nome) {
+    public Time(String nome, int pontuacao) {
         this.nome = nome;
-        this.pontuacao = 0;
+        this.pontuacao = pontuacao;
         this.jogos = new ArrayList<>();
     }
 
     // Getters e setters
     public String getNome() { return nome; }
 
-    //public void setNome(String nome) { this.nome = nome; }
-
-    //public int getPontuacao() { return pontuacao; }
-
-    //public void setPontuacao(int pontuacao) { this.pontuacao = pontuacao; }
-
     public List<Jogo> getJogos() { return jogos; }
-
-    //public void setJogos(List<Jogo> jogos) { this.jogos = jogos; }
 
     public void adicionarJogo(Jogo jogo) { if (!jogos.contains(jogo)) { jogos.add(jogo); } }
 

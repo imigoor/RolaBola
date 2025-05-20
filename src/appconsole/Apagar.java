@@ -24,13 +24,13 @@ public class Apagar {
                     Time timeCasa = jogo.getTimeCasa();
                     Time timeVisita = jogo.getTimeVisita();
 
-                    // Remove o jogo da lista do time da casa, se não for o time que será removido
+                    // remove o jogo da lista do time da casa, se não for o time que será removido
                     if (timeCasa != null && timeCasa != time) {
                         timeCasa.getJogos().remove(jogo);
                         db.store(timeCasa);
                     }
 
-                    // Remove o jogo da lista do time visitante, se não for o time que será removido
+                    // remove o jogo da lista do time visitante, se não for o time que será removido
                     if (timeVisita != null && timeVisita != time) {
                         timeVisita.getJogos().remove(jogo);
                         db.store(timeVisita);

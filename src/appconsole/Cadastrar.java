@@ -8,11 +8,11 @@ public class Cadastrar {
     public static void main(String[] args) {
         ObjectContainer db = Util.conectarBanco();
 
-        Time t1 = new Time("Barcelona");
-        Time t2 = new Time("Real Madrid");
-        Time t3 = new Time("Palmeiras");
-        Time t4 = new Time("Fluminense");
-        Time t5 = new Time("Cruzeiro");
+        Time t1 = new Time("Barcelona", 0);
+        Time t2 = new Time("Real Madrid", 16);
+        Time t3 = new Time("Palmeiras", 2);
+        Time t4 = new Time("Fluminense", 6);
+        Time t5 = new Time("Cruzeiro", 12);
 
         Jogo j1 = new Jogo(1, "2024-06-01 15:00", "Camp Nou", t1, t2, 2, 1, 5000);
         Jogo j2 = new Jogo(2, "2024-20-01 20:00", "Allianz", t3, t2, 0, 3, 8000);

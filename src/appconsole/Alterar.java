@@ -9,14 +9,14 @@ public class Alterar {
     public static void main(String[] args) {
         ObjectContainer db = Util.conectarBanco();
 
-        Time time = buscarTimePorNome(db, "Real Madrid");
+        Time time = buscarTimePorNome(db, "Fluminense");
         Jogo jogo = buscarJogoPorId(db, 1);
 
         // Para adicionar relacionamento:
-//         adicionarRelacionamento(db, time, jogo);
+         adicionarRelacionamento(db, time, jogo);
 
         // Para remover relacionamento:
-        removerRelacionamento(db, time, jogo);
+//        removerRelacionamento(db, time, jogo);
 
         Util.desconectar();
     }
