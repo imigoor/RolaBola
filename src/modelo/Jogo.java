@@ -1,4 +1,4 @@
-package domain.modelos;
+package modelo;
 
 public class Jogo {
     private int id;

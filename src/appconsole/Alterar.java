@@ -1,22 +1,22 @@
-package application;
+package appconsole;
 
 import com.db4o.ObjectContainer;
 import com.db4o.query.Query;
-import domain.modelos.*;
+import modelo.Jogo;
+import modelo.Time;
 
 public class Alterar {
     public static void main(String[] args) {
         ObjectContainer db = Util.conectarBanco();
 
-        Time time = buscarTimePorNome(db, "Fluminense");
-        Jogo jogo = buscarJogoPorId(db, 2);
-
+        Time time = buscarTimePorNome(db, "Real Madrid");
+        Jogo jogo = buscarJogoPorId(db, 1);
 
         // Para adicionar relacionamento:
-         adicionarRelacionamento(db, time, jogo);
+//         adicionarRelacionamento(db, time, jogo);
 
         // Para remover relacionamento:
-//        removerRelacionamento(db, time, jogo);
+        removerRelacionamento(db, time, jogo);
 
         Util.desconectar();
     }
@@ -49,9 +49,9 @@ public class Alterar {
             db.store(jogo.getTimeVisita());
             db.store(jogo.getTimeCasa());
 
-            jogo.setTimeCasa(null);
-            jogo.setTimeVisita(null);
-            db.store(jogo);
+//            jogo.setTimeCasa(null);
+//            jogo.setTimeVisita(null);
+//            db.store(jogo);
 
             db.delete(jogo);
 

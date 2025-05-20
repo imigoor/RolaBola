@@ -1,10 +1,10 @@
-package application;
+package appconsole;
 
 import com.db4o.ObjectContainer;
 import com.db4o.ObjectSet;
 import com.db4o.query.Query;
-import domain.modelos.Time;
-import domain.modelos.Jogo;
+import modelo.Time;
+import modelo.Jogo;
 
 public class Apagar {
     public static void main(String[] args) {

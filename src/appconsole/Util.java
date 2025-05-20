@@ -1,9 +1,9 @@
-package application;
+package appconsole;
 
 import com.db4o.*;
 import com.db4o.config.EmbeddedConfiguration;
-import domain.modelos.Jogo;
-import domain.modelos.Time;
+import modelo.Jogo;
+import modelo.Time;
 
 public class Util {
     private static final String DB_FILE = "rolabola.db4o";

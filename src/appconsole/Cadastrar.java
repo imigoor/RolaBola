@@ -1,7 +1,8 @@
-package application;
+package appconsole;
 
 import com.db4o.ObjectContainer;
-import domain.modelos.*;
+import modelo.Jogo;
+import modelo.Time;
 
 public class Cadastrar {
     public static void main(String[] args) {
@@ -19,10 +20,8 @@ public class Cadastrar {
 
         t1.adicionarJogo(j1);
         t2.adicionarJogo(j1);
-
         t2.adicionarJogo(j2);
         t3.adicionarJogo(j2);
-
         t2.adicionarJogo(j3);
         t5.adicionarJogo(j3);
 
