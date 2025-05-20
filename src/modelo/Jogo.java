@@ -27,6 +27,16 @@ public class Jogo {
 
     public Time getTimeVisita() { return timeVisita; }
 
+    public void setTimeVisita(Time timeVisita) { this.timeVisita = timeVisita; }
+
+    //public int getGols1() { return gols1; }
+
+    //public void setGols1(int gols1) { this.gols1 = gols1; }
+
+    //public int getGols2() { return gols2; }
+
+    //public void setGols2(int gols2) { this.gols2 = gols2; }
+    
     @Override
     public String toString() {
         return "Jogo -> " +
