@@ -14,7 +14,6 @@ public class Time {
         this.jogos = new ArrayList<>();
     }
 
-    // Getters e setters
     public String getNome() { return nome; }
 
     public List<Jogo> getJogos() { return jogos; }

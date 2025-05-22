@@ -2,7 +2,7 @@ package appconsole;
 
 import com.db4o.ObjectContainer;
 import com.db4o.query.Query;
-import modelo.Jogo;
+import modelo.*;
 
 public class Consultar {
     public static void main(String[] args) {
@@ -20,10 +20,10 @@ public class Consultar {
         q2.descend("timeCasa").descend("nome").constrain("Real Madrid");
         q2.execute().forEach(System.out::println);
 
-        System.out.println("\n[JOGOS COM MAIS DE 6000 INGRESSOS]");
+        System.out.println("\n[TIMES COM MAIS DE 10 PONTOS]");
         Query q3 = db.query();
-        q3.constrain(Jogo.class);
-        q3.descend("ingressos").constrain(6000).greater();
+        q3.constrain(Time.class);
+        q3.descend("pontuacao").constrain(10).greater();
         q3.execute().forEach(System.out::println);
 
         Util.desconectar();

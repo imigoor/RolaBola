@@ -9,65 +9,39 @@ public class Alterar {
     public static void main(String[] args) {
         ObjectContainer db = Util.conectarBanco();
 
-        Time time = buscarTimePorNome(db, "Fluminense");
         Jogo jogo = buscarJogoPorId(db, 1);
 
-        // Para adicionar relacionamento:
-         adicionarRelacionamento(db, time, jogo);
+        Time timeCasaAtual = jogo.getTimeCasa();
+        Time timeVisitaAtual = jogo.getTimeVisita();
 
-        // Para remover relacionamento:
-//        removerRelacionamento(db, time, jogo);
-
-        Util.desconectar();
-    }
-
-    private static void adicionarRelacionamento(ObjectContainer db, Time time, Jogo jogo) {
-        if (!time.getJogos().contains(jogo)) {
-            Time timeAntigo = jogo.getTimeCasa();
-            if (timeAntigo != null) {
-                timeAntigo.removerJogo(jogo);
-                db.store(timeAntigo);
-            }
-
-            jogo.setTimeCasa(time);
-            db.store(jogo);
-
-            time.adicionarJogo(jogo);
-            db.store(time);
-
-            System.out.println("Relacionamento adicionado: Jogo ao Time.");
-        } else {
-            System.out.println("Relacionamento já existe. Nada adicionado.");
+        if (timeCasaAtual != null) {
+            timeCasaAtual.removerJogo(jogo);
+            db.store(timeCasaAtual);
         }
-    }
 
-    private static void removerRelacionamento(ObjectContainer db, Time time, Jogo jogo) {
-        if (time.getJogos().contains(jogo)) {
-            jogo.getTimeCasa().removerJogo(jogo);
-            jogo.getTimeVisita().removerJogo(jogo);
+        if (timeVisitaAtual != null) {
+            timeVisitaAtual.removerJogo(jogo);
+            db.store(timeVisitaAtual);
+        }
 
-            db.store(jogo.getTimeVisita());
+        jogo.setTimeCasa(timeVisitaAtual);
+        jogo.setTimeVisita(timeCasaAtual);
+        db.store(jogo);
+
+        if (jogo.getTimeCasa() != null) {
+            jogo.getTimeCasa().adicionarJogo(jogo);
             db.store(jogo.getTimeCasa());
-
-//            jogo.setTimeCasa(null);
-//            jogo.setTimeVisita(null);
-//            db.store(jogo);
-
-            db.delete(jogo);
-
-            System.out.println("Relacionamento removido.");
-        } else {
-            System.out.println("Relacionamento não existe. Nada removido.");
         }
-    }
 
+        if (jogo.getTimeVisita() != null) {
+            jogo.getTimeVisita().adicionarJogo(jogo);
+            db.store(jogo.getTimeVisita());
+        }
 
-    // Métodos auxiliares para evitar repetição
-    private static Time buscarTimePorNome(ObjectContainer db, String nome) {
-        Query q = db.query();
-        q.constrain(Time.class);
-        q.descend("nome").constrain(nome);
-        return (Time) q.execute().get(0);
+        System.out.println("Times trocados com sucesso.");
+
+        db.commit();
+        Util.desconectar();
     }
 
     private static Jogo buscarJogoPorId(ObjectContainer db, int id) {

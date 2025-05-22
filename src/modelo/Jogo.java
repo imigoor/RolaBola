@@ -8,9 +8,8 @@ public class Jogo {
     private Time timeVisita;
     private int gols1;
     private int gols2;
-    private int ingressos;
 
-    public Jogo(int id, String dataHora, String local, Time timeCasa, Time timeVisita, int gols1, int gols2, int ingressos) {
+    public Jogo(int id, String dataHora, String local, Time timeCasa, Time timeVisita, int gols1, int gols2) {
         this.id = id;
         this.dataHora = dataHora;
         this.local = local;
@@ -18,7 +17,6 @@ public class Jogo {
         this.timeVisita = timeVisita;
         this.gols1 = gols1;
         this.gols2 = gols2;
-        this.ingressos = ingressos;
     }
 
     public Time getTimeCasa() { return timeCasa; }
@@ -36,7 +34,7 @@ public class Jogo {
     //public int getGols2() { return gols2; }
 
     //public void setGols2(int gols2) { this.gols2 = gols2; }
-    
+
     @Override
     public String toString() {
         return "Jogo -> " +
@@ -46,7 +44,7 @@ public class Jogo {
                 ", timeCasa: " + (timeCasa != null ? timeCasa.getNome() : "N/A") +
                 ", timeVisita: " + (timeVisita != null ? timeVisita.getNome() : "N/A") +
                 ", gols1: " + gols1 +
-                ", gols2: " + gols2 +
-                ", ingressos: " + ingressos ;
+                ", gols2: " + gols2;
+                //"+ , ingressos: " + ingressos ;
     }
 }

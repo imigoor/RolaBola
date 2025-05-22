@@ -12,7 +12,7 @@ public class Apagar {
 
         Query q = db.query();
         q.constrain(Time.class);
-        q.descend("nome").constrain("Real Madrid");
+        q.descend("nome").constrain("Palmeiras");
 
         ObjectSet result = q.execute();
 
@@ -41,6 +41,7 @@ public class Apagar {
             } else {
                 System.out.println("O time não possui jogos associados e não será apagado.");
             }
+            db.commit();
         } else {
             System.out.println("Time não encontrado.");
         }
