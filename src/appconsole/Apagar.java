@@ -12,7 +12,7 @@ public class Apagar {
 
         Query q = db.query();
         q.constrain(Time.class);
-        q.descend("nome").constrain("Palmeiras");
+        q.descend("nome").constrain("Vasco");
 
         ObjectSet result = q.execute();
 
