@@ -11,6 +11,7 @@ public class Time {
     private String nome;
 
     private int pontuacao;
+    private byte[] foto;
 
     @OneToMany(mappedBy = "timeCasa", cascade = CascadeType.ALL)
     private List<Jogo> jogosEmCasa = new ArrayList<>();
@@ -18,19 +19,21 @@ public class Time {
     @OneToMany(mappedBy = "timeVisita", cascade = CascadeType.ALL)
     private List<Jogo> jogosFora = new ArrayList<>();
 
-    public Time() {
-    }
+    public Time() {}
 
-    public Time(String nome) {
+    public Time(String nome, byte[] foto) {
         this.nome = nome;
         this.pontuacao = 0;
+        this.foto = foto;
     }
 
     public String getNome() { return nome; }
+    public void setNome(String nome) { this.nome = nome; }
+    public int getPontuacao() { return pontuacao; }
+    public void setPontuacao(int pontuacao) { this.pontuacao = pontuacao; }
+    public byte[] getFoto() { return foto; }
+    public void setFoto(byte[] foto) { this.foto = foto; }
 
-    // public List<Jogo> getJogosEmCasa() { return jogosEmCasa; }
-
-    // public List<Jogo> getJogosFora() { return jogosFora; }
 
     public List<Jogo> getTodosOsJogos() {
         List<Jogo> todosJogos = new ArrayList<>();
@@ -52,11 +55,7 @@ public class Time {
     }
 
     public void adicionarPontos(int pontos) { this.pontuacao += pontos; }
-
-    public void removerJogo(Jogo jogo) {
-        jogosEmCasa.remove(jogo);
-        jogosFora.remove(jogo);
-    }
+    public void removerJogo(Jogo jogo) { jogosEmCasa.remove(jogo); jogosFora.remove(jogo); }
 
     @Override
     public String toString() {

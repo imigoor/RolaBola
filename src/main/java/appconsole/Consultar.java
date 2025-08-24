@@ -1,43 +1,25 @@
 package appconsole;
 
-import jakarta.persistence.*;
 import modelo.*;
-import java.util.List;
+import requisito.Fachada;
 
 public class Consultar {
-    private EntityManager manager;
-
     public Consultar() {
         try {
-            manager = Util.conectarBanco();
+            Fachada.inicializar();
+            System.out.println("\n--- JOGOS POR DATA ('01-06-2024 15:00') ---");
+            for (Jogo j : Fachada.jogosPorData("01-06-2024 15:00")) { System.out.println(j); }
 
-            System.out.println("\n[JOGOS NA DATAHORA '01-06-2024 15:00']");
-            List<Jogo> jogosData = manager.createQuery("SELECT j FROM Jogo j WHERE j.dataHora = :data", Jogo.class)
-                    .setParameter("data", "01-06-2024 15:00")
-                    .getResultList();
-            jogosData.forEach(System.out::println);
+            System.out.println("\n--- JOGOS ONDE O REAL MADRID É O TIME DA CASA ---");
+            for (Jogo j : Fachada.jogosTimeCasa("Real Madrid")) { System.out.println(j); }
 
-            System.out.println("\n[JOGOS ONDE TIME 'Real Madrid' JOGA EM CASA]");
-            List<Jogo> jogosCasa = manager.createQuery("SELECT j FROM Jogo j WHERE j.timeCasa.nome = :nome", Jogo.class)
-                    .setParameter("nome", "Real Madrid")
-                    .getResultList();
-            jogosCasa.forEach(System.out::println);
-
-            System.out.println("\n[TIMES COM MAIS DE 1 JOGO]");
-            List<Time> times = manager.createQuery(
-                    "SELECT t FROM Time t " +
-                            "JOIN Jogo j ON j.timeCasa = t OR j.timeVisita = t " +
-                            "GROUP BY t " +
-                            "HAVING COUNT(j) > 1", Time.class
-            ).getResultList();
-            times.forEach(System.out::println);
-
+            System.out.println("\n--- TIMES COM MAIS DE 1 JOGO ---");
+            for (Time t : Fachada.timesComMaisDeNJogos(1)) { System.out.println(t); }
         } catch (Exception e) {
-            System.out.println("Exceção: " + e.getMessage());
+            System.out.println("Erro: " + e.getMessage());
+        } finally {
+            Fachada.finalizar();
         }
-
-        Util.fecharBanco();
-        System.out.println("Fim da aplicação");
     }
 
     public static void main(String[] args) {

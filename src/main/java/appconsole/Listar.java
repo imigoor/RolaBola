@@ -1,31 +1,26 @@
 package appconsole;
 
-import jakarta.persistence.*;
-import java.util.List;
 import modelo.Jogo;
 import modelo.Time;
+import requisito.Fachada;
 
 public class Listar {
-    private EntityManager manager;
-
     public Listar() {
         try {
-            manager = Util.conectarBanco();
-
-            System.out.println("\n=== TIMES CADASTRADOS ===");
-            List<Time> times = manager.createQuery("SELECT t FROM Time t", Time.class).getResultList();
-            times.forEach(System.out::println);
-
-            System.out.println("\n=== JOGOS CADASTRADOS ===");
-            List<Jogo> jogos = manager.createQuery("SELECT j FROM Jogo j", Jogo.class).getResultList();
-            jogos.forEach(System.out::println);
-
+            Fachada.inicializar();
+            System.out.println("\n--- TIMES ---");
+            for (Time t : Fachada.listarTimes()) {
+                System.out.println(t);
+            }
+            System.out.println("\n--- JOGOS ---");
+            for (Jogo j : Fachada.listarJogos()) {
+                System.out.println(j);
+            }
         } catch (Exception e) {
-            System.out.println("Algo deu errado!! Erro: " + e.getMessage());
+            System.out.println("Erro: " + e.getMessage());
+        } finally {
+            Fachada.finalizar();
         }
-
-        Util.fecharBanco();
-        System.out.println("\n Fim da aplicação");
     }
 
     public static void main(String[] args) {

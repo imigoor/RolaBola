@@ -25,8 +25,7 @@ public class Jogo {
 
     public Jogo() { }
 
-    public Jogo(int id, String dataHora, String local, Time timeCasa, Time timeVisita, int gols1, int gols2) {
-        this.id = id;
+    public Jogo(String dataHora, String local, Time timeCasa, Time timeVisita, int gols1, int gols2) {
         this.dataHora = dataHora;
         this.local = local;
         this.timeCasa = timeCasa;
@@ -36,7 +35,7 @@ public class Jogo {
         atualizarPontuacaoDosTimes();
     }
 
-    private void atualizarPontuacaoDosTimes()
+    public void atualizarPontuacaoDosTimes()
     {
         if (gols1 > gols2) {
             timeCasa.adicionarPontos(3);
@@ -59,20 +58,18 @@ public class Jogo {
         }
     }
 
+    public int getId() { return id; }
+    public String getDataHora() { return dataHora; }
+    public void setDataHora(String dataHora) { this.dataHora = dataHora; }
+    public String getLocal() { return local; }
+    public void setLocal(String local) { this.local = local; }
     public Time getTimeCasa() { return timeCasa; }
-
     public void setTimeCasa(Time timeCasa) { this.timeCasa = timeCasa; }
-
     public Time getTimeVisita() { return timeVisita; }
-
     public void setTimeVisita(Time timeVisita) { this.timeVisita = timeVisita; }
-
     public int getGols1() { return gols1; }
-
     public void setGols1(int gols1) { this.gols1 = gols1; }
-
     public int getGols2() { return gols2; }
-
     public void setGols2(int gols2) { this.gols2 = gols2; }
 
     @Override
