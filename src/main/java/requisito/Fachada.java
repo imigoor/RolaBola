@@ -110,10 +110,10 @@ public class Fachada {
             DAO.rollback();
             throw new Exception("Time não encontrado para exclusão: " + nome);
         }
-        if (!time.getTodosOsJogos().isEmpty()) {
-            DAO.rollback();
-            throw new Exception("Não é possível excluir o time, pois ele tem jogos associados.");
-        }
+        //if (!time.getTodosOsJogos().isEmpty()) {
+            //DAO.rollback();
+            //throw new Exception("Não é possível excluir o time, pois ele tem jogos associados.");
+        //}
         timeDAO.delete(time);
         DAO.commit();
     }

@@ -13,10 +13,10 @@ public class Time {
     private int pontuacao;
     private byte[] foto;
 
-    @OneToMany(mappedBy = "timeCasa", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "timeCasa", cascade = CascadeType.REMOVE)
     private List<Jogo> jogosEmCasa = new ArrayList<>();
 
-    @OneToMany(mappedBy = "timeVisita", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "timeVisita", cascade = CascadeType.REMOVE)
     private List<Jogo> jogosFora = new ArrayList<>();
 
     public Time() {}

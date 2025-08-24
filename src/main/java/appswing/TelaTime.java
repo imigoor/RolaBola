@@ -104,7 +104,7 @@ public class TelaTime extends JDialog {
                     label.setText("");
                     if (table.getSelectedRow() >= 0) {
                         String nome = (String) table.getValueAt(table.getSelectedRow(), 0);
-                        Time t = Fachada.localizarTime(nome);s
+                        Time t = Fachada.localizarTime(nome);
                         textField_1.setText(nome);
 
                         // carregar foto

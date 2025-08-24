@@ -112,16 +112,6 @@ public class TelaJogo extends JDialog {
         label.setBounds(26, 303, 735, 14);
         frame.getContentPane().add(label);
 
-        button = new JButton("Listar");
-        button.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                listagem();
-            }
-        });
-        button.setFont(new Font("Tahoma", Font.PLAIN, 12));
-        button.setBounds(204, 10, 112, 23);
-        frame.getContentPane().add(button);
-
         label_4 = new JLabel("selecione um jogo para editar/apagar");
         label_4.setBounds(26, 194, 735, 14);
         frame.getContentPane().add(label_4);
